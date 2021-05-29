@@ -3,10 +3,12 @@ package com.arnoract.composedemo
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.CornerSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.MaterialTheme
@@ -17,6 +19,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -49,13 +53,15 @@ fun PhotographerCard() {
                     .clip(RoundedCornerShape(8.dp))
                     .background(MaterialTheme.colors.surface)
             ) {
-                Surface(
-                    modifier = Modifier.size(50.dp),
-                    shape = CircleShape,
-                    color = MaterialTheme.colors.onSurface.copy(alpha = 0.2f)
-                ) {
-                    // Image goes here
-                }
+                Image(
+                    painter = painterResource(id = R.drawable.p1),
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    modifier = Modifier
+                        .padding(8.dp)
+                        .size(40.dp)
+                        .clip(CircleShape)
+                )
                 Column(
                     modifier = Modifier
                         .padding(start = 8.dp)
@@ -66,11 +72,15 @@ fun PhotographerCard() {
                 }
             }
             Spacer(modifier = Modifier.height(16.dp))
-            Box(
+            Image(
+                painter = painterResource(id = R.drawable.p1),
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
                 modifier = Modifier
-                    .background(Color.Gray)
+                    .padding(8.dp)
                     .fillMaxWidth()
                     .height(200.dp)
+                    .clip(RoundedCornerShape(corner = CornerSize(16.dp)))
             )
         }
     }
